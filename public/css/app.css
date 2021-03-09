@@ -10942,3 +10942,9 @@ a.text-dark:focus {
   }
 }
 
+.review-create-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  height: 70vh;
+  width: 70vw;
+}
