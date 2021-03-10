@@ -10948,3 +10948,9 @@ a.text-dark:focus {
   height: 70vh;
   width: 70vw;
 }
+
+.review-index-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+}

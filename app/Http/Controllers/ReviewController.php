@@ -12,7 +12,8 @@ class ReviewController extends Controller
     
     public function index()
     {
-    	return view('index');
+        $reviews = Review::orderBy('created_at', 'DESC')->get();
+    	return view('index', compact('reviews'));
     }
     
     public function create()
@@ -23,10 +24,15 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $post = $request->all();
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'impression' => 'required',
+        ]);
         $data = ['user_id' => \Auth::id(), 'title' => $post['title'], 'content' => $post['content'], 'impression' => $post['impression']];
         
         Review::insert($data);
         
-        return redirect('/');
+        return redirect('/')->with('flash_message', '投稿が完了しました');
     }
 }
